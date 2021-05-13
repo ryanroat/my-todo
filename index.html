@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css">
   <title>Todo Tracker</title>
 </head>
 <body>
@@ -15,6 +16,22 @@
     <label for="newTodo">Enter a task</label>
     <input id="newTodo" type="text" placeholder="New Task" required>
     <button id="newTodoBtn" type="submit">Add Task</button>
+    <hr>
+    <div class="taskList">
+      <ul class="no-bullets">
+        <!-- task list item example hard coded -->
+        <li class="row">
+          <div class="six columns">A Task</div>
+          <div class="one columns">
+            <a href="#" class="edit">Edit</a>
+          </div>
+          <div class="one columns">
+            <a href="#" class="delete">Delete</a>
+          </div>
+        </li>
+        <!-- tasks inserted into DOM here -->
+      </ul>
+    </div>
   </div>
   <script src="./app.js"></script>
 </body>
