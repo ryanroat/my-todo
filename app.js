@@ -7,6 +7,7 @@ taskItems = document.querySelector('.task-items'); // <ul> where tasks are displ
 // event listeners
 function startEventListeners() {
   newTodoBtn.addEventListener('click', newBtnClick);
+  taskItems.addEventListener('click', taskOptions);
 }
 
 function newBtnClick() {
@@ -34,6 +35,18 @@ function newBtnClick() {
     // clear input
     newTodo.value = '';
   }
+}
+
+function taskOptions(event) {
+  console.log(event.target);
+  if (event.target.classList.contains('delete')) {
+    console.log('delete clicked');
+    event.target.parentElement.parentElement.remove();
+  }
+  if (event.target.classList.contains('edit')) {
+    console.log('edit clicked');
+  }
+  event.preventDefault();
 }
 
 startEventListeners();
