@@ -9,9 +9,12 @@
   <title>Todo Tracker</title>
 </head>
 <body>
-  <div class="title">
+  <heading class="title">
     <h1>Todo Tracker</h1>
-  </div>
+    <section class="darkmode">
+      <button id="darkmodeBtn">Dark Mode</button>
+    </section>
+  </heading>
   <div class="container">
     <label for="newTodo">Enter a task</label>
     <input id="newTodo" type="text" placeholder="New Task" required autofocus>
@@ -33,6 +36,7 @@
       </ul>
     </div>
   </div>
+  <script src="./darkmode.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>

@@ -1,13 +1,17 @@
 /* eslint-disable linebreak-style */
 // DOM constants
-newTodo = document.querySelector('#newTodo'); // new task input field
-newTodoBtn = document.querySelector('#newTodoBtn'); // new task submit button
-taskItems = document.querySelector('.task-items'); // <ul> where tasks are displayed
+const newTodo = document.querySelector('#newTodo'); // new task input field
+const newTodoBtn = document.querySelector('#newTodoBtn'); // new task submit buttonconst
+const taskItems = document.querySelector('.task-items'); // <ul> where tasks are displayed
+// const darkmodeBtn = document.querySelector('#darkmodeBtn');
 
 // event listeners
 function startEventListeners() {
   newTodoBtn.addEventListener('click', newBtnClick);
   taskItems.addEventListener('click', taskOptions);
+  // darkmodeBtn.addEventListener('click', () => {
+  //   console.log('darkmode clicked');
+  // });
 }
 
 function newBtnClick() {

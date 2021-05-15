@@ -1,2 +1,5 @@
-* add footer with personal info/links
-* css for header, footer
+- store tasks in local storage
+- add footer with personal info/links
+- css for header, footer
+- dark mode
+- database storage of tasks
