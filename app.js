@@ -34,6 +34,7 @@ function newBtnClick() {
     taskItems.appendChild(newLI);
     // clear input
     newTodo.value = '';
+    newTodo.focus();
   }
 }
 
