@@ -14,6 +14,25 @@ function startEventListeners() {
   // });
 }
 
+// insert a task into DOM
+function displayTask(task) {
+  const newLI = document.createElement('li');
+  newLI.className = 'row';
+  newLI.innerHTML = `
+  <div class="seven columns">${newTask}</div>
+        <div class="two columns">
+          <button class="edit">Edit</button>
+        </div>
+        <div class="one columns">
+          <button class="delete">Delete</button>
+        </div>
+  `;
+  taskItems.appendChild(newLI);
+  // clear input
+  newTodo.value = '';
+  newTodo.focus();
+}
+
 function newBtnClick() {
   console.log('button clicked');
   newTask = newTodo.value;
@@ -24,21 +43,7 @@ function newBtnClick() {
     console.log(newTask);
     // store new task
     // display new task
-    const newLI = document.createElement('li');
-    newLI.className = 'row';
-    newLI.innerHTML = `
-    <div class="seven columns">${newTask}</div>
-          <div class="two columns">
-            <button class="edit">Edit</button>
-          </div>
-          <div class="one columns">
-            <button class="delete">Delete</button>
-          </div>
-    `;
-    taskItems.appendChild(newLI);
-    // clear input
-    newTodo.value = '';
-    newTodo.focus();
+    displayTask(newTask);
   }
 }
 

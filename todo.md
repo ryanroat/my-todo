@@ -3,3 +3,5 @@
 - css for header, footer
 - dark mode
 - database storage of tasks
+- Add timestamps and due by dates.
+- sorting
