@@ -23,12 +23,12 @@ function newBtnClick() {
     const newLI = document.createElement('li');
     newLI.className = 'row';
     newLI.innerHTML = `
-    <div class="six columns">${newTask}</div>
-          <div class="one columns">
-            <a href="#" class="edit">Edit</a>
+    <div class="seven columns">${newTask}</div>
+          <div class="two columns">
+            <button class="edit">Edit</button>
           </div>
           <div class="one columns">
-            <a href="#" class="delete">Delete</a>
+            <button class="delete">Delete</button>
           </div>
     `;
     taskItems.appendChild(newLI);
