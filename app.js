@@ -46,6 +46,10 @@ function taskOptions(event) {
   }
   if (event.target.classList.contains('edit')) {
     console.log('edit clicked');
+    console.log(event.target.parentElement.previousElementSibling.innerText);
+    newTodo.value = event.target.parentElement.previousElementSibling.innerText;
+    event.target.parentElement.parentElement.remove();
+    newTodo.focus();
   }
   event.preventDefault();
 }
