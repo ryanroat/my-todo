@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 
 // app constats
-const tasks = [];
+let tasks = [];
 
 // DOM constants
 const newTodo = document.querySelector('#newTodo'); // new task input field
@@ -12,9 +12,12 @@ const LS = window.localStorage;
 
 // load persistent tasks from local storage
 function loadStoredTasks() {
-  const storedTask = JSON.parse(LS.getItem('tdtrack'));
+  const storedTasks = JSON.parse(LS.getItem('tdtrack'));
+  if (storedTasks) {
+    tasks = storedTasks;
+  }
   // console.log(storedTask);
-  storedTask.forEach((task) => {
+  tasks.forEach((task) => {
     displayTask(task);
   });
 }
@@ -49,20 +52,21 @@ function displayTask(task) {
 }
 
 function newBtnClick() {
-  console.log('button clicked');
+  console.log('add task button clicked');
   newTask = newTodo.value;
   if (newTask === '') {
     // message please enter a task
   }
   if (newTask !== '') {
-    console.log(newTask);
+    // console.log(newTask);
     // store new task
     // local storage key is tdtrack - value will be json string of array of tasks
-    tasks.push({ task: newTask });
+    const newTaskObj = { task: newTask };
+    tasks.push(newTaskObj);
     LS.setItem('tdtrack', JSON.stringify(tasks));
     console.log(tasks);
     // display new task
-    displayTask(newTask);
+    displayTask(newTaskObj);
   }
 }
 
