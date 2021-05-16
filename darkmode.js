@@ -26,7 +26,7 @@ const darkmodeBtn = document.querySelector('#darkmodeBtn');
 if (darkmodeBtn) {
   darkmodeBtn.addEventListener('click', () => {
     // document.documentElement.classList.toggle('dark-mode');
-    console.log('darkmode clicked');
+    // console.log('darkmode clicked');
     toggleDM();
   });
 }

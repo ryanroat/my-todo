@@ -1,9 +1,14 @@
 /* eslint-disable linebreak-style */
+
+// app constats
+const tasks = [];
+
 // DOM constants
 const newTodo = document.querySelector('#newTodo'); // new task input field
 const newTodoBtn = document.querySelector('#newTodoBtn'); // new task submit buttonconst
 const taskItems = document.querySelector('.task-items'); // <ul> where tasks are displayed
 // const darkmodeBtn = document.querySelector('#darkmodeBtn');
+const LS = window.localStorage;
 
 // event listeners
 function startEventListeners() {
@@ -42,6 +47,10 @@ function newBtnClick() {
   if (newTask !== '') {
     console.log(newTask);
     // store new task
+    // local storage key is tdtrack - value will be json string of array of tasks
+    tasks.push({ task: newTask });
+    LS.setItem('tdtrack', JSON.stringify(tasks));
+    console.log(tasks);
     // display new task
     displayTask(newTask);
   }
