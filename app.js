@@ -10,6 +10,15 @@ const taskItems = document.querySelector('.task-items'); // <ul> where tasks are
 // const darkmodeBtn = document.querySelector('#darkmodeBtn');
 const LS = window.localStorage;
 
+// load persistent tasks from local storage
+function loadStoredTasks() {
+  const storedTask = JSON.parse(LS.getItem('tdtrack'));
+  // console.log(storedTask);
+  storedTask.forEach((task) => {
+    displayTask(task);
+  });
+}
+
 // event listeners
 function startEventListeners() {
   newTodoBtn.addEventListener('click', newBtnClick);
@@ -21,10 +30,11 @@ function startEventListeners() {
 
 // insert a task into DOM
 function displayTask(task) {
+  console.log(task);
   const newLI = document.createElement('li');
   newLI.className = 'row';
   newLI.innerHTML = `
-  <div class="seven columns">${newTask}</div>
+  <div class="seven columns">${task.task}</div>
         <div class="two columns">
           <button class="edit">Edit</button>
         </div>
@@ -72,4 +82,5 @@ function taskOptions(event) {
   event.preventDefault();
 }
 
+loadStoredTasks();
 startEventListeners();
