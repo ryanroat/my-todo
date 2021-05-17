@@ -1,12 +1,15 @@
-- add ID to task objects using Date.now().toString(16)
-- use data attributes to store ID in DOM element for each task
-- store tasks in local storage
+- confirmation message before delete
+- clear all tasks button
 - add cancel edit button / no changes
 - fix responsiveness
 - add footer with personal info/links
 - css for header, footer
-- dark mode
 - database storage of tasks
 - Add timestamps and due by dates.
 - sorting
 - reorder items
+- done - abstract addStoredTask to own function
+- done - store tasks in local storage
+- done - add ID to task objects using Date.now().toString(16)
+- done - use data attributes to store ID in DOM element for each task
+- done - dark mode
