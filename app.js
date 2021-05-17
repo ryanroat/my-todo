@@ -77,28 +77,32 @@ function newBtnClick() {
 function removeStoredTask(ID) {
   // find and remove task from array matching task ID
   tasks.forEach((task, index) => {
-    if (task.taskID == ID) {
+    if (task.taskID === ID) {
       tasks.splice(index, 1);
     }
   });
+  // store tasks array to local storage
+  LS.setItem('tdtrack', JSON.stringify(tasks));
 }
 
 // edit and delete tasks
 function taskOptions(event) {
-  console.log(event.target);
+  // console.log(event.target);
   // check and run if delete was clicked
   if (event.target.classList.contains('delete')) {
     // get task ID from DOM delete button element
     const deleteID = event.target.classList[1].split('=')[1];
     removeStoredTask(deleteID);
-    // store tasks array to local storage
-    LS.setItem('tdtrack', JSON.stringify(tasks));
+
     // remove selected task element from DOM
     event.target.parentElement.parentElement.remove();
   }
 
   if (event.target.classList.contains('edit')) {
-    console.log('edit clicked');
+    // console.log('edit clicked');
+    const editID = event.target.classList[1].split('=')[1];
+    // console.log(editID);
+    removeStoredTask(editID);
     newTodo.value = event.target.parentElement.previousElementSibling.innerText;
     event.target.parentElement.parentElement.remove();
     newTodo.focus();
