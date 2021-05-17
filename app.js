@@ -38,7 +38,7 @@ function displayTask(task) {
   newLI.innerHTML = `
   <div class="seven columns">${task.task}</div>
         <div class="two columns">
-          <button class="edit">Edit</button>
+          <button class="edit data-ID=${task.taskID}">Edit</button>
         </div>
         <div class="one columns">
           <button class="delete data-ID=${task.taskID}">Delete</button>
@@ -73,6 +73,16 @@ function newBtnClick() {
   }
 }
 
+// remove task from local storage
+function removeStoredTask(ID) {
+  // find and remove task from array matching task ID
+  tasks.forEach((task, index) => {
+    if (task.taskID == ID) {
+      tasks.splice(index, 1);
+    }
+  });
+}
+
 // edit and delete tasks
 function taskOptions(event) {
   console.log(event.target);
@@ -80,12 +90,7 @@ function taskOptions(event) {
   if (event.target.classList.contains('delete')) {
     // get task ID from DOM delete button element
     const deleteID = event.target.classList[1].split('=')[1];
-    // find and remove task from array matching task ID
-    tasks.forEach((task, index) => {
-      if (task.taskID == deleteID) {
-        tasks.splice(index, 1);
-      }
-    });
+    removeStoredTask(deleteID);
     // store tasks array to local storage
     LS.setItem('tdtrack', JSON.stringify(tasks));
     // remove selected task element from DOM
