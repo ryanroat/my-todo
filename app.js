@@ -8,7 +8,7 @@ const newTodo = document.querySelector('#newTodo'); // new task input field
 const newTodoBtn = document.querySelector('#newTodoBtn'); // new task submit buttonconst
 const taskItems = document.querySelector('.task-items'); // <ul> where tasks are displayed
 // const darkmodeBtn = document.querySelector('#darkmodeBtn');
-const LS = window.localStorage;
+const LS = window.localStorage; // shortcut to localstorage API
 
 // load persistent tasks from local storage
 function loadStoredTasks() {
@@ -16,7 +16,6 @@ function loadStoredTasks() {
   if (storedTasks) {
     tasks = storedTasks;
   }
-  // console.log(storedTask);
   tasks.forEach((task) => {
     displayTask(task);
   });
@@ -24,16 +23,16 @@ function loadStoredTasks() {
 
 // event listeners
 function startEventListeners() {
+  document.addEventListener('DOMContentLoaded', loadStoredTasks);
   newTodoBtn.addEventListener('click', newBtnClick);
   taskItems.addEventListener('click', taskOptions);
   // darkmodeBtn.addEventListener('click', () => {
-  //   console.log('darkmode clicked');
   // });
 }
 
 // insert a task into DOM
 function displayTask(task) {
-  console.log(task);
+  // create and populate new <li> element
   const newLI = document.createElement('li');
   newLI.className = 'row';
   newLI.innerHTML = `
@@ -45,54 +44,56 @@ function displayTask(task) {
           <button class="delete data-ID=${task.taskID}">Delete</button>
         </div>
   `;
+  // append new <li> element to DOM task list
   taskItems.appendChild(newLI);
-  // clear input
+  // clear new task input and set focus to same
   newTodo.value = '';
   newTodo.focus();
 }
 
 function newBtnClick() {
-  console.log('add task button clicked');
   newTask = newTodo.value;
   if (newTask === '') {
     // message please enter a task
   }
   if (newTask !== '') {
-    // console.log(newTask);
     // store new task
-    // local storage key is tdtrack - value will be json string of array of tasks
+    // local storage key is tdtrack - value will be json string of array of task objects
+    // task objects consist of a task string and a hex timestamp ID
     const newTaskObj = {
       task: newTask,
       taskID: Date.now().toString(16),
     };
+    // append new task obj to tasks array
     tasks.push(newTaskObj);
+    // store tasks array to local storage
     LS.setItem('tdtrack', JSON.stringify(tasks));
-    console.log(tasks);
     // display new task
     displayTask(newTaskObj);
   }
 }
 
+// edit and delete tasks
 function taskOptions(event) {
   console.log(event.target);
+  // check and run if delete was clicked
   if (event.target.classList.contains('delete')) {
-    console.log('delete clicked');
-    // console.log(event.target);
+    // get task ID from DOM delete button element
     const deleteID = event.target.classList[1].split('=')[1];
-    // console.log(deleteID);
+    // find and remove task from array matching task ID
     tasks.forEach((task, index) => {
-      // console.log(task, index);
       if (task.taskID == deleteID) {
-        // console.log('match');
         tasks.splice(index, 1);
       }
     });
+    // store tasks array to local storage
     LS.setItem('tdtrack', JSON.stringify(tasks));
+    // remove selected task element from DOM
     event.target.parentElement.parentElement.remove();
   }
+
   if (event.target.classList.contains('edit')) {
     console.log('edit clicked');
-    // console.log(event.target.parentElement.previousElementSibling.innerText);
     newTodo.value = event.target.parentElement.previousElementSibling.innerText;
     event.target.parentElement.parentElement.remove();
     newTodo.focus();
@@ -100,5 +101,4 @@ function taskOptions(event) {
   event.preventDefault();
 }
 
-loadStoredTasks();
 startEventListeners();

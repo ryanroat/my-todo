@@ -2,9 +2,11 @@
 - use data attributes to store ID in DOM element for each task
 - store tasks in local storage
 - add cancel edit button / no changes
+- fix responsiveness
 - add footer with personal info/links
 - css for header, footer
 - dark mode
 - database storage of tasks
 - Add timestamps and due by dates.
 - sorting
+- reorder items
