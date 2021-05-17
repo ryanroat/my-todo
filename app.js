@@ -37,12 +37,12 @@ function displayTask(task) {
   const newLI = document.createElement('li');
   newLI.className = 'row';
   newLI.innerHTML = `
-  <div class="seven columns data-ID=${task.taskID}">${task.task}</div>
+  <div class="seven columns">${task.task}</div>
         <div class="two columns">
           <button class="edit">Edit</button>
         </div>
         <div class="one columns">
-          <button class="delete">Delete</button>
+          <button class="delete data-ID=${task.taskID}">Delete</button>
         </div>
   `;
   taskItems.appendChild(newLI);
@@ -77,7 +77,17 @@ function taskOptions(event) {
   console.log(event.target);
   if (event.target.classList.contains('delete')) {
     console.log('delete clicked');
-    console.log(event.target);
+    // console.log(event.target);
+    const deleteID = event.target.classList[1].split('=')[1];
+    // console.log(deleteID);
+    tasks.forEach((task, index) => {
+      // console.log(task, index);
+      if (task.taskID == deleteID) {
+        // console.log('match');
+        tasks.splice(index, 1);
+      }
+    });
+    LS.setItem('tdtrack', JSON.stringify(tasks));
     event.target.parentElement.parentElement.remove();
   }
   if (event.target.classList.contains('edit')) {
