@@ -1,4 +1,6 @@
+- add ID to task objects using Date.now().toString(16)
 - store tasks in local storage
+- add cancel edit button / no changes
 - add footer with personal info/links
 - css for header, footer
 - dark mode

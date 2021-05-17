@@ -61,7 +61,10 @@ function newBtnClick() {
     // console.log(newTask);
     // store new task
     // local storage key is tdtrack - value will be json string of array of tasks
-    const newTaskObj = { task: newTask };
+    const newTaskObj = {
+      task: newTask,
+      taskID: Date.now().toString(16),
+    };
     tasks.push(newTaskObj);
     LS.setItem('tdtrack', JSON.stringify(tasks));
     console.log(tasks);
@@ -74,11 +77,12 @@ function taskOptions(event) {
   console.log(event.target);
   if (event.target.classList.contains('delete')) {
     console.log('delete clicked');
+    console.log(event.target);
     event.target.parentElement.parentElement.remove();
   }
   if (event.target.classList.contains('edit')) {
     console.log('edit clicked');
-    console.log(event.target.parentElement.previousElementSibling.innerText);
+    // console.log(event.target.parentElement.previousElementSibling.innerText);
     newTodo.value = event.target.parentElement.previousElementSibling.innerText;
     event.target.parentElement.parentElement.remove();
     newTodo.focus();
