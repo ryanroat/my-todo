@@ -37,7 +37,7 @@ function displayTask(task) {
   const newLI = document.createElement('li');
   newLI.className = 'row';
   newLI.innerHTML = `
-  <div class="seven columns">${task.task}</div>
+  <div class="seven columns data-ID=${task.taskID}">${task.task}</div>
         <div class="two columns">
           <button class="edit">Edit</button>
         </div>

@@ -1,4 +1,5 @@
 - add ID to task objects using Date.now().toString(16)
+- use data attributes to store ID in DOM element for each task
 - store tasks in local storage
 - add cancel edit button / no changes
 - add footer with personal info/links
