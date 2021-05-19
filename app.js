@@ -86,15 +86,17 @@ function newBtnClick() {
 function taskOptions(event) {
   // check and run if delete was clicked
   if (event.target.classList.contains('delete')) {
-    // get task ID from DOM delete button element
-    const deleteID = event.target.classList[1].split('=')[1];
-    // remove task from local storage
-    removeStoredTask(deleteID);
-    // remove selected task element from DOM
-    event.target.parentElement.parentElement.remove();
+    if (window.confirm('Remove this task?')) {
+      // get task ID from DOM delete button element
+      const deleteID = event.target.classList[1].split('=')[1];
+      // remove task from local storage
+      removeStoredTask(deleteID);
+      // remove selected task element from DOM
+      event.target.parentElement.parentElement.remove();
+    }
   }
 
-  // check and run if delete was clicked
+  // check and run if edit was clicked
   if (event.target.classList.contains('edit')) {
     // get task ID from DOM edit button element
     const editID = event.target.classList[1].split('=')[1];

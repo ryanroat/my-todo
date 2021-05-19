@@ -1,11 +1,13 @@
-- confirmation message before delete
+- change confirm delete modal to UI element
+- down caret opens timestamp display
+- Add timestamps and due by dates.
 - clear all tasks button
 - add cancel edit button / no changes
+- add mark done checkbox
 - fix responsiveness
 - add footer with personal info/links
 - css for header, footer
 - database storage of tasks
-- Add timestamps and due by dates.
 - sorting
 - reorder items
 - done - abstract addStoredTask to own function
@@ -13,3 +15,4 @@
 - done - add ID to task objects using Date.now().toString(16)
 - done - use data attributes to store ID in DOM element for each task
 - done - dark mode
+- done - confirmation message before delete
