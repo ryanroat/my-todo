@@ -1,7 +1,7 @@
-- change confirm delete modal to UI element
-- down caret opens timestamp display
-- Add timestamps and due by dates.
 - clear all tasks button
+- Add timestamps and due by dates.
+- down caret opens timestamp display
+- change confirm delete modal to UI element
 - add cancel edit button / no changes
 - add mark done checkbox
 - fix responsiveness

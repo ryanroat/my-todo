@@ -7,7 +7,7 @@ let tasks = [];
 const newTodo = document.querySelector('#newTodo'); // new task input field
 const newTodoBtn = document.querySelector('#newTodoBtn'); // new task submit buttonconst
 const taskItems = document.querySelector('.task-items'); // <ul> where tasks are displayed
-// const darkmodeBtn = document.querySelector('#darkmodeBtn');
+const clearTasksBtn = document.querySelector('#clear-tasks-btn');
 const LS = window.localStorage; // shortcut to localstorage API
 
 // insert a task into DOM
@@ -16,7 +16,7 @@ function displayTask(taskObj) {
   const newLI = document.createElement('li');
   newLI.className = 'row';
   newLI.innerHTML = `
-  <div class="seven columns">${taskObj.task}</div>
+  <div class="seven columns"><i class="fas fa-caret-down"></i> ${taskObj.task}</div>
         <div class="two columns">
           <button class="edit data-ID=${taskObj.taskID}">Edit</button>
         </div>
@@ -29,6 +29,13 @@ function displayTask(taskObj) {
   // clear new task input and set focus to same
   newTodo.value = '';
   newTodo.focus();
+}
+
+function displayDetails(row) {
+  const detailRow = document.createElement('li');
+  detailRow.className = 'row';
+  detailRow.innerHTML = '\n\r <br>display details here';
+  row.appendChild(detailRow);
 }
 
 // load persistent tasks from local storage
@@ -110,7 +117,20 @@ function taskOptions(event) {
     newTodo.focus();
   }
 
+  // check if font awesome caret-down was clicked
+  if (event.target.classList.contains('fa-caret-down')) {
+    console.log(event.target);
+    // displayDetails(event.target.parentElement.parentElement);
+  }
+
   event.preventDefault();
+}
+
+function clearAllTasks() {
+  // TODO: ask are you sure?
+  tasks = [];
+  LS.removeItem('tdtrack');
+  location.reload();
 }
 
 // event listeners
@@ -118,6 +138,7 @@ function startEventListeners() {
   document.addEventListener('DOMContentLoaded', loadStoredTasks);
   newTodoBtn.addEventListener('click', newBtnClick);
   taskItems.addEventListener('click', taskOptions);
+  clearTasksBtn.addEventListener('click', clearAllTasks);
 }
 
 startEventListeners();
